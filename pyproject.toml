@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "glitch-bench"
+version = "0.1.0"
+description = "Deja Vu in the Machine — Detecting world model inconsistencies in LLMs"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+authors = [
+    {name = "Mukunda Katta"},
+]
+keywords = ["llm", "benchmark", "world-model", "consistency", "interpretability"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "anthropic>=0.39.0",
+    "openai>=1.50.0",
+    "click>=8.1.0",
+    "rich>=13.7.0",
+    "pydantic>=2.5.0",
+    "matplotlib>=3.8.0",
+    "seaborn>=0.13.0",
+    "pandas>=2.1.0",
+    "numpy>=1.26.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.3.0",
+]
+
+[project.scripts]
+glitch = "glitch.cli:cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
